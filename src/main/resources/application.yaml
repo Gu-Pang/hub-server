@@ -1,6 +1,9 @@
+server:
+  port: 19040
+
 spring:
   application:
-    name: hub
+    name: hub-server
   config:
     import: "optional:configserver:"
 
@@ -22,4 +25,7 @@ spring:
 
 eureka:
   client:
-    enabled: false
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://eureka-server:8761/eureka/
