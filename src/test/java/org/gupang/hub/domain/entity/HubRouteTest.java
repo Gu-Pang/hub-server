@@ -95,7 +95,7 @@ class HubRouteTest {
                 .distance(VALID_DISTANCE)
                 .build())
                 .isInstanceOf(CustomException.class)
-                .hasMessageContaining(HubErrorCode.INVALID_ROUTE.getMessage());
+                .hasMessageContaining(HubErrorCode.INVALID_HUB_ROUTE.getMessage());
     }
 
     @Test

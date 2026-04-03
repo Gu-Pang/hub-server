@@ -56,7 +56,7 @@ public class HubRoute extends BaseEntity {
         Objects.requireNonNull(endHub, "도착 허브는 필수 입니다.");
 
         if (startHub.getHubId().equals(endHub.getHubId())) {
-            throw new CustomException(HubErrorCode.INVALID_ROUTE);
+            throw new CustomException(HubErrorCode.INVALID_HUB_ROUTE);
         }
     }
 
