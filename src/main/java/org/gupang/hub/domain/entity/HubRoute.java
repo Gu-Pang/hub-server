@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.gupang.common.entity.BaseEntity;
 import org.gupang.common.exception.CustomException;
-import org.gupang.hub.domain.exception.HubErrorCode;
+import org.gupang.hub.global.exception.HubErrorCode;
 import org.hibernate.annotations.SQLRestriction;
 
 import java.util.Objects;

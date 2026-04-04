@@ -1,4 +1,4 @@
-package org.gupang.hub.domain.exception;
+package org.gupang.hub.global.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

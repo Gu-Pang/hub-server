@@ -1,7 +1,7 @@
 package org.gupang.hub.domain.entity;
 
 import org.gupang.common.exception.CustomException;
-import org.gupang.hub.domain.exception.HubErrorCode;
+import org.gupang.hub.global.exception.HubErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
