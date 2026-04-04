@@ -5,7 +5,7 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.gupang.common.exception.CustomException;
-import org.gupang.hub.domain.exception.HubErrorCode;
+import org.gupang.hub.global.exception.HubErrorCode;
 
 @Embeddable
 @Getter

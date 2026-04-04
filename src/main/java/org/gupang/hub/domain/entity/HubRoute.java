@@ -7,14 +7,16 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.gupang.common.entity.BaseEntity;
 import org.gupang.common.exception.CustomException;
-import org.gupang.hub.domain.exception.HubErrorCode;
+import org.gupang.hub.global.exception.HubErrorCode;
 import org.hibernate.annotations.SQLRestriction;
 
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity
-@Table(name = "p_hub_routes")
+@Table(name = "p_hub_route", uniqueConstraints = {
+        @UniqueConstraint(name = "uk_hub_route", columnNames = {"start_hub_id", "end_hub_id"})
+})
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @SQLRestriction("deleted_at IS NULL")
@@ -54,7 +56,7 @@ public class HubRoute extends BaseEntity {
         Objects.requireNonNull(endHub, "도착 허브는 필수 입니다.");
 
         if (startHub.getHubId().equals(endHub.getHubId())) {
-            throw new CustomException(HubErrorCode.INVALID_ROUTE);
+            throw new CustomException(HubErrorCode.INVALID_HUB_ROUTE);
         }
     }
 

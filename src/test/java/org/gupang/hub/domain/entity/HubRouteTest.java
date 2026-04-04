@@ -1,7 +1,7 @@
 package org.gupang.hub.domain.entity;
 
 import org.gupang.common.exception.CustomException;
-import org.gupang.hub.domain.exception.HubErrorCode;
+import org.gupang.hub.global.exception.HubErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -95,7 +95,7 @@ class HubRouteTest {
                 .distance(VALID_DISTANCE)
                 .build())
                 .isInstanceOf(CustomException.class)
-                .hasMessageContaining(HubErrorCode.INVALID_ROUTE.getMessage());
+                .hasMessageContaining(HubErrorCode.INVALID_HUB_ROUTE.getMessage());
     }
 
     @Test
