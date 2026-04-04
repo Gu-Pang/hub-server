@@ -11,6 +11,7 @@ public enum HubErrorCode implements BaseErrorCode {
     // Hub
     INVALID_LATITUDE(HttpStatus.BAD_REQUEST, "유효하지 않은 위도입니다."),
     INVALID_LONGITUDE(HttpStatus.BAD_REQUEST, "유효하지 않은 경도입니다."),
+    HUB_NOT_FOUND(HttpStatus.NOT_FOUND, "허브를 찾을 수 없습니다."),
 
     // Hub Route
     INVALID_HUB_ROUTE(HttpStatus.BAD_REQUEST, "유효하지 않은 경로 요청입니다."),
