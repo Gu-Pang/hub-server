@@ -17,7 +17,7 @@ import static org.mockito.Mockito.when;
 class HubRouteTest {
 
     private static final Integer VALID_DURATION = 2400;
-    private static final Double VALID_DISTANCE = 35.5;
+    private static final Integer VALID_DISTANCE = 350000;
 
     private Hub createMockHub() {
         Hub hub = mock(Hub.class);
@@ -154,9 +154,9 @@ class HubRouteTest {
     }
 
     @ParameterizedTest
-    @ValueSource(doubles = {0.0, -0.1, -10.5})
+    @ValueSource(ints = {0, -1, -100})
     @DisplayName("실패: 이동 거리가 0 이하일 경우 IllegalArgumentException 발생")
-    void createHubRoute_Fail_InvalidDistance(double invalidDistance) {
+    void createHubRoute_Fail_InvalidDistance(Integer invalidDistance) {
         // given
         Hub startHub = createMockHub();
         Hub endHub = createMockHub();

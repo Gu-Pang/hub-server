@@ -28,7 +28,7 @@ CREATE TABLE p_hub_route (
     start_hub_id UUID NOT NULL,
     end_hub_id UUID NOT NULL,
     duration INT NOT NULL,
-    distance DOUBLE PRECISION NOT NULL,
+    distance INT NOT NULL,
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     created_by UUID,
     updated_at TIMESTAMP,
