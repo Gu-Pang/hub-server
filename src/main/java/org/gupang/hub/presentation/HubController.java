@@ -4,15 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.gupang.hub.application.hub.dto.HubDetailInfo;
 import org.gupang.hub.application.hub.dto.HubInfo;
 import org.gupang.hub.application.hub.service.HubService;
-import org.gupang.hub.presentation.dto.HubDetailResponse;
-import org.gupang.hub.presentation.dto.HubResponse;
+import org.gupang.hub.presentation.dto.response.HubDetailResponse;
+import org.gupang.hub.presentation.dto.response.HubResponse;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
