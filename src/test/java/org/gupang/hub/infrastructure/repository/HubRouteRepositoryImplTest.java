@@ -75,7 +75,7 @@ class HubRouteRepositoryImplTest extends RepositoryTestBase {
                 .startHub(seoulHub)
                 .endHub(busanHub)
                 .duration(300)
-                .distance(400.5)
+                .distance(400)
                 .build();
 
         em.persist(route);

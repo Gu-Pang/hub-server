@@ -38,10 +38,10 @@ public class HubRoute extends BaseEntity {
     private Integer duration;
 
     @Column(nullable = false)
-    private Double distance;
+    private Integer distance;
 
     @Builder
-    public HubRoute(Hub startHub, Hub endHub, Integer duration, Double distance) {
+    public HubRoute(Hub startHub, Hub endHub, Integer duration, Integer distance) {
         validateHubs(startHub, endHub);
         validateDurationAndDistance(duration, distance);
 
@@ -60,7 +60,7 @@ public class HubRoute extends BaseEntity {
         }
     }
 
-    private void validateDurationAndDistance(Integer duration, Double distance) {
+    private void validateDurationAndDistance(Integer duration, Integer distance) {
         Objects.requireNonNull(duration, "소요 시간은 필수 입니다.");
         Objects.requireNonNull(distance, "이동 거리는 필수 입니다.");
 
