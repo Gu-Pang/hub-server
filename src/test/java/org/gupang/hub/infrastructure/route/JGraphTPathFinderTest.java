@@ -69,7 +69,10 @@ class JGraphTPathFinderTest {
 
         // then
         assertThat(result).hasSize(2)
-                .extracting("startHubId", "endHubId", "duration")
+                .extracting(
+                        HubRouteInfo::startHubId,
+                        HubRouteInfo::endHubId,
+                        HubRouteInfo::estimatedDuration)
                 .containsExactly(
                         Tuple.tuple((hubA), hubB, 10),
                         Tuple.tuple(hubB, hubC, 20));
