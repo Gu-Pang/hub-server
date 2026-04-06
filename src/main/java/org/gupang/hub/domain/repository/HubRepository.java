@@ -10,6 +10,11 @@ import java.util.UUID;
 public interface HubRepository {
 
     Page<Hub> findAll(Pageable pageable);
+
     Optional<Hub> findById(UUID hubId);
+
+    Hub save(Hub hub);
+
+    boolean existsByHubName(String hubName);
 
 }
