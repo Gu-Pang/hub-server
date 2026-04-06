@@ -40,8 +40,8 @@ public class HubRoute extends BaseEntity {
     @Column(nullable = false)
     private Integer distance;
 
-    @Builder
-    public HubRoute(Hub startHub, Hub endHub, Integer duration, Integer distance) {
+    @Builder(access = AccessLevel.PRIVATE)
+    private HubRoute(Hub startHub, Hub endHub, Integer duration, Integer distance) {
         validateHubs(startHub, endHub);
         validateDurationAndDistance(duration, distance);
 
@@ -49,6 +49,15 @@ public class HubRoute extends BaseEntity {
         this.endHub = endHub;
         this.duration = duration;
         this.distance = distance;
+    }
+
+    public static HubRoute create(Hub startHub, Hub endHub, Integer duration, Integer distance) {
+        return HubRoute.builder()
+                .startHub(startHub)
+                .endHub(endHub)
+                .duration(duration)
+                .distance(distance)
+                .build();
     }
 
     private void validateHubs(Hub startHub, Hub endHub) {

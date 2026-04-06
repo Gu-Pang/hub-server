@@ -19,14 +19,8 @@ class HubTest {
     @Test
     @DisplayName("성공: 정상적인 정보가 입력될 경우 Hub 생성")
     void createHub_Success() {
-        // when
-        Hub hub = Hub.builder()
-                .hubName(validHubName)
-                .address(validAddress)
-                .coordinate(validCoordinate)
-                .build();
+        Hub hub = Hub.create(validHubName, validAddress, validCoordinate);
 
-        // then
         assertThat(hub.getHubName()).isEqualTo(validHubName);
         assertThat(hub.getAddress()).isEqualTo(validAddress);
         assertThat(hub.getCoordinate()).isEqualTo(validCoordinate);
@@ -36,12 +30,7 @@ class HubTest {
     @ValueSource(strings = {"", " ", "  "})
     @DisplayName("실패: 허브명이 비어있거나 공백일 경우 IllegalArgumentException 발생")
     void createHub_Fail_InvalidHubName(String invalidHubName) {
-        // when & then
-        assertThatThrownBy(() -> Hub.builder()
-                .hubName(invalidHubName)
-                .address(validAddress)
-                .coordinate(validCoordinate)
-                .build())
+        assertThatThrownBy(() -> Hub.create(invalidHubName, validAddress, validCoordinate))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("허브명은 필수 입니다.");
     }
@@ -49,12 +38,7 @@ class HubTest {
     @Test
     @DisplayName("실패: 허브명이 null일 경우 IllegalArgumentException 발생")
     void createHub_Fail_HubNameIsNull() {
-        // when & then
-        assertThatThrownBy(() -> Hub.builder()
-                .hubName(null)
-                .address(validAddress)
-                .coordinate(validCoordinate)
-                .build())
+        assertThatThrownBy(() -> Hub.create(null, validAddress, validCoordinate))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("허브명은 필수 입니다.");
     }
@@ -62,12 +46,7 @@ class HubTest {
     @Test
     @DisplayName("실패: 주소 정보가 null일 경우 NullPointerException 발생")
     void createHub_Fail_AddressIsNull() {
-        // when & then
-        assertThatThrownBy(() -> Hub.builder()
-                .hubName(validHubName)
-                .address(null)
-                .coordinate(validCoordinate)
-                .build())
+        assertThatThrownBy(() -> Hub.create(validHubName, null, validCoordinate))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessage("허브 주소는 필수 입니다.");
     }
@@ -75,15 +54,8 @@ class HubTest {
     @Test
     @DisplayName("실패: 좌표 정보가 null일 경우 NullPointerException 발생")
     void createHub_Fail_CoordinateIsNull() {
-        // when & then
-        assertThatThrownBy(() -> Hub.builder()
-                .hubName(validHubName)
-                .address(validAddress)
-                .coordinate(null)
-                .build())
+        assertThatThrownBy(() -> Hub.create(validHubName, validAddress, null))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessage("허브의 좌표는 필수 입니다.");
     }
-
-
 }

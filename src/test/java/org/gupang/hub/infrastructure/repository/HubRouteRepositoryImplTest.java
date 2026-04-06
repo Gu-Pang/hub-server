@@ -2,8 +2,9 @@ package org.gupang.hub.infrastructure.repository;
 
 import org.gupang.hub.domain.entity.Hub;
 import org.gupang.hub.domain.entity.HubRoute;
-import org.gupang.hub.domain.vo.Address;
-import org.gupang.hub.domain.vo.Coordinate;
+import org.gupang.hub.fixture.AddressFixture;
+import org.gupang.hub.fixture.CoordinateFixture;
+import org.gupang.hub.fixture.HubFixture;
 import org.gupang.hub.infrastructure.repository.base.RepositoryTestBase;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -49,34 +50,20 @@ class HubRouteRepositoryImplTest extends RepositoryTestBase {
     }
 
     private void saveDefaultHubsAndRoute() {
-        Hub seoulHub = Hub.builder()
-                .hubName("서울특별시 센터")
-                .address(new Address("서울특별시 송파구 송파대로 55", "물류동 1층"))
-                .coordinate(new Coordinate(37.478, 127.123))
-                .build();
+        Hub seoulHub = HubFixture.seoulHub();
+        Hub busanHub = HubFixture.busanHub();
 
-        Hub busanHub = Hub.builder()
-                .hubName("부산광역시 센터")
-                .address(new Address("부산 동구 중앙대로 206", "항만연계센터"))
-                .coordinate(new Coordinate(35.115, 127.350))
-                .build();
-
-        Hub daejeonHub = Hub.builder()
-                .hubName("대전광역시 센터")
-                .address(new Address("대전 서구 둔산로 100", null))
-                .coordinate(new Coordinate(36.350, 127.384))
-                .build();
+        Hub daejeonHub = Hub.create(
+                "대전광역시 센터",
+                AddressFixture.create("대전 서구 둔산로 100", null),
+                CoordinateFixture.create(36.350, 127.384)
+        );
 
         em.persist(seoulHub);
         em.persist(busanHub);
         em.persist(daejeonHub);
 
-        HubRoute route = HubRoute.builder()
-                .startHub(seoulHub)
-                .endHub(busanHub)
-                .duration(300)
-                .distance(400)
-                .build();
+        HubRoute route = HubRoute.create(seoulHub, busanHub, 300, 400);
 
         em.persist(route);
 
