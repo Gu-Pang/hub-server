@@ -35,20 +35,27 @@ public class Hub extends BaseEntity {
     @Embedded
     private Coordinate coordinate;
 
-    @Builder
-    public Hub(String hubName, Address address, Coordinate coordinate) {
-        validateHubInfo(hubName, address, coordinate);
-
+    @Builder(access = AccessLevel.PRIVATE)
+    private Hub(String hubName, Address address, Coordinate coordinate) {
         this.hubName = hubName;
         this.address = address;
         this.coordinate = coordinate;
     }
 
-    private void validateHubInfo(String hubName, Address address, Coordinate coordinate) {
+    public static Hub create(String hubName, Address address, Coordinate coordinate) {
+        validateHubInfo(hubName, address, coordinate);
+
+        return Hub.builder()
+                .hubName(hubName)
+                .address(address)
+                .coordinate(coordinate)
+                .build();
+    }
+
+    private static void validateHubInfo(String hubName, Address address, Coordinate coordinate) {
         if (hubName == null || hubName.isBlank()) {
             throw new IllegalArgumentException("허브명은 필수 입니다.");
         }
-
         Objects.requireNonNull(address, "허브 주소는 필수 입니다.");
         Objects.requireNonNull(coordinate, "허브의 좌표는 필수 입니다.");
     }

@@ -1,4 +1,4 @@
-package org.gupang.hub.presentation.dto;
+package org.gupang.hub.presentation.dto.response;
 
 import org.gupang.hub.application.hub.dto.HubInfo;
 

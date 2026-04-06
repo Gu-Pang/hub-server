@@ -25,4 +25,14 @@ public class HubRepositoryImpl implements HubRepository {
     public Optional<Hub> findById(UUID hubId) {
         return hubJpaRepository.findById(hubId);
     }
+
+    @Override
+    public Hub save(Hub hub) {
+        return hubJpaRepository.save(hub);
+    }
+
+    @Override
+    public boolean existsByHubName(String hubName) {
+        return hubJpaRepository.existsByHubName(hubName);
+    }
 }
